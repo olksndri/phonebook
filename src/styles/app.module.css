@@ -1,0 +1,66 @@
+body {
+  padding: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 3px solid rgba(102, 51, 153, 0.749);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  background-color: rgba(102, 51, 153, 0.749);
+  color: aliceblue;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  transition: 200ms linear background-color;
+}
+
+button:active {
+  background-color: rgba(128, 1, 255, 0.881);
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  width: 200px;
+  height: 24px;
+  margin-bottom: 16px;
+}
+
+.contacts-list {
+  list-style-type: decimal;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.contacts-list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts-wrapper {
+  composes: form;
+}
