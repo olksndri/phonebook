@@ -1,4 +1,4 @@
-import css from '../styles/app.module.css';
+import css from '../App/App.module.css';
 import PropTypes from 'prop-types';
 
 export const ContactForm = ({ onSubmit }) => {
