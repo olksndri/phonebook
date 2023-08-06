@@ -8,8 +8,9 @@ import {
   selectContacts,
   selectError,
   selectIsLoading,
-} from '../redux/selectors';
-import { fetchContacts, addContact } from '../redux/operations';
+} from '../redux/contacts/selectors';
+import { fetchContacts, addContact } from '../redux/contacts/operations';
+import { Loading } from 'components/Loading/Loading';
 
 export const Contacts = () => {
   const contacts = useSelector(selectContacts);
@@ -21,12 +22,12 @@ export const Contacts = () => {
     evt.preventDefault();
     const form = evt.target;
     const name = form.elements.name.value;
-    const phone = form.elements.number.value;
+    const number = form.elements.number.value;
 
     if (contacts.filter(el => el.name === name).length > 0) {
       window.alert(`${name} is already in contacts`);
     } else {
-      dispatch(addContact({ name, phone }));
+      dispatch(addContact({ name, number }));
       form.reset();
     }
   };

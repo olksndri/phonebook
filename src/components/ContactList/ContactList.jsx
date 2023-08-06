@@ -1,7 +1,7 @@
 import css from '../App/App.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts, selectSearchFilter } from 'redux/selectors';
-import { deleteContact } from 'redux/operations';
+import { selectContacts, selectSearchFilter } from 'redux/contacts/selectors';
+import { deleteContact } from 'redux/contacts/operations';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -20,7 +20,7 @@ export const ContactList = () => {
               return (
                 <li key={el.id} className={css['contacts-list-item']}>
                   <span>
-                    {el.name}: {el.phone}
+                    {el.name}: {el.number}
                   </span>
                   <button type="button" onClick={onDelete} id={el.id}>
                     Delete
@@ -33,7 +33,7 @@ export const ContactList = () => {
                 return (
                   <li key={el.id} className={css['contacts-list-item']}>
                     <span>
-                      {el.name}: {el.phone}
+                      {el.name}: {el.number}
                     </span>
                     <button type="button" onClick={onDelete} id={el.id}>
                       Delete

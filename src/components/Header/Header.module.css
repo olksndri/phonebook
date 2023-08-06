@@ -1,0 +1,16 @@
+.header {
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
+  -webkit-box-shadow: var(--accent-shadow-dark);
+  -moz-box-shadow: var(--accent-shadow-dark);
+  box-shadow: var(--accent-shadow-dark);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  column-gap: 32px;
+}
