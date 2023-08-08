@@ -60,3 +60,12 @@ a {
   text-decoration: none;
   color: white;
 }
+
+.hidden {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 0px;
+}

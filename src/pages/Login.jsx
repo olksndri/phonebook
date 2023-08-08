@@ -3,6 +3,11 @@ import { logIn } from 'redux/auth/operations';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { passwordVisibility } from 'validation/validatePassword';
+import { IconButton } from '@mui/material';
+import { InputAdornment } from '@mui/material';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -15,6 +20,10 @@ export const Login = () => {
 
     dispatch(logIn({ email, password }));
     form.reset();
+  };
+
+  const onClickPasswordVisibility = evt => {
+    passwordVisibility(evt, 'logPasswordInput');
   };
 
   return (
@@ -43,11 +52,21 @@ export const Login = () => {
           />
           <TextField
             type="password"
-            id="password"
+            id="logPasswordInput"
             name="password"
             label="Your password:"
             variant="filled"
             required
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={onClickPasswordVisibility}>
+                    <VisibilityIcon className="hidden" />
+                    <VisibilityOffIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </Box>
         <Box
