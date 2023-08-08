@@ -2,8 +2,10 @@
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: color 250ms linear;
 }
 
-.nav-link:active {
-  color: white;
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--accent-grey);
 }

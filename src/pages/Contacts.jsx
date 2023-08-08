@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import css from '../components/App/App.module.css';
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { ContactList } from '../components/ContactList/ContactList';
 import { Filter } from '../components/Filter/Filter';
@@ -10,7 +9,15 @@ import {
   selectIsLoading,
 } from '../redux/contacts/selectors';
 import { fetchContacts, addContact } from '../redux/contacts/operations';
-import { Loading } from 'components/Loading/Loading';
+import Container from '@mui/material/Container';
+import { styled } from 'styled-components';
+
+const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 12px;
+  color: black;
+  font-weight: 500;
+`;
 
 export const Contacts = () => {
   const contacts = useSelector(selectContacts);
@@ -37,11 +44,10 @@ export const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <h1 className={css.title}>Phonebook</h1>
+    <Container sx={{ paddingTop: '20px' }}>
+      <Title>Phonebook</Title>
       <ContactForm onSubmit={onSubmit} />
-      <div className={css['contacts-wrapper']}>
-        <h2 className={css.title}>Contacts</h2>
+      <div>
         <Filter />
         {isLoading && error === null && (
           <div>We are loading your contacts...</div>
@@ -49,6 +55,6 @@ export const Contacts = () => {
         {!isLoading && error === null && <ContactList />}
         {error !== null && <div>Ooops, error... {error}</div>}
       </div>
-    </>
+    </Container>
   );
 };

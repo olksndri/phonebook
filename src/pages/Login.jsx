@@ -1,12 +1,8 @@
-import { styled } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-
-export const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 20px 40px;
-`;
+import { TextField } from '@mui/material';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -16,17 +12,66 @@ export const Login = () => {
     const form = evt.target;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
+
     dispatch(logIn({ email, password }));
     form.reset();
   };
 
   return (
-    <StyledForm onSubmit={onSubmit}>
-      <label htmlFor="email">Email</label>
-      <input type="text" id="email" name="email" />
-      <label htmlFor="password">Password</label>
-      <input type="text" id="password" name="password" />
-      <button type="submit"></button>
-    </StyledForm>
+    <Box
+      sx={{
+        ['max-width']: 300,
+        paddingLeft: '40px',
+        paddingTop: '40px',
+      }}
+    >
+      <form onSubmit={onSubmit}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            rowGap: '20px',
+            marginBottom: '20px',
+          }}
+        >
+          <TextField
+            type="email"
+            name="email"
+            label="Your email:"
+            variant="filled"
+            required
+          />
+          <TextField
+            type="password"
+            id="password"
+            name="password"
+            label="Your password:"
+            variant="filled"
+            required
+          />
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+          }}
+        >
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              width: '150px',
+              background: 'var(--accent-pink)',
+              '&:hover': {
+                background: 'var(--accent-orange)',
+              },
+            }}
+          >
+            Login
+          </Button>
+        </Box>
+      </form>
+    </Box>
   );
 };

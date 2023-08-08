@@ -6,12 +6,8 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 
 const StyledNavLink = styled(NavLink)`
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-
   &.active {
-    color: black;
+    color: var(--accent-grey);
   }
 `;
 
@@ -20,19 +16,27 @@ export const Header = () => {
 
   return (
     <>
-      <nav className={css.header}>
-        <StyledNavLink to="/">Home</StyledNavLink>
-        <div className={css.wrapper}>
-          {isLoggedIn ? (
-            <UserMenu />
-          ) : (
-            <>
-              <StyledNavLink to="/register">Register</StyledNavLink>
-              <StyledNavLink to="/login">Login</StyledNavLink>
-            </>
-          )}
-        </div>
-      </nav>
+      <div className={css['header-wrap']}>
+        <nav className={css.header}>
+          <StyledNavLink to="/" className={css['nav-link']}>
+            Home
+          </StyledNavLink>
+          <div className={css.wrapper}>
+            {isLoggedIn ? (
+              <UserMenu />
+            ) : (
+              <>
+                <StyledNavLink to="/register" className={css['nav-link']}>
+                  Register
+                </StyledNavLink>
+                <StyledNavLink to="/login" className={css['nav-link']}>
+                  Login
+                </StyledNavLink>
+              </>
+            )}
+          </div>
+        </nav>
+      </div>
       <Outlet />
     </>
   );

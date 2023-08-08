@@ -1,0 +1,15 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+  column-gap: 16px;
+}
+
+.search {
+  color: black;
+  transition: color 250ms linear;
+  font-size: larger;
+}

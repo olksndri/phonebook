@@ -2,9 +2,9 @@ import { styled } from 'styled-components';
 
 const Greetings = styled.div`
   position: absolute;
-  top: 50%;
+  top: 100%;
   right: 50%;
-  transform: translate(50%, -50%);
+  transform: translate(50%, 200%);
   width: 600px;
   height: 100px;
   background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
@@ -21,7 +21,6 @@ export const Home = () => {
     <>
       <Greetings>
         <p>Welcome to the homepage of the phonebook!</p>
-        <p></p>
       </Greetings>
     </>
   );

@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  margin-bottom: 60px;
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  row-gap: 20px;
+}

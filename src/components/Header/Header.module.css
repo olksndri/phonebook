@@ -1,3 +1,10 @@
+.header-wrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .header {
   background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
   -webkit-box-shadow: var(--accent-shadow-dark);
@@ -7,10 +14,22 @@
   display: flex;
   justify-content: space-between;
   padding: 30px 20px;
-  margin-bottom: 20px;
 }
 
 .wrapper {
   display: flex;
   column-gap: 32px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 250ms linear;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--accent-grey);
+  outline: none;
 }

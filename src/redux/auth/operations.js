@@ -44,7 +44,7 @@ export const logIn = createAsyncThunk(
   }
 );
 
-//? POST => {}
+//? POST => {"name", "email", }
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
@@ -54,6 +54,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
+//? GET => {}
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {

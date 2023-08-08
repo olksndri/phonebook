@@ -1,26 +1,42 @@
-import css from '../App/App.module.css';
+import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
+import { TextField } from '@mui/material';
 
 export const ContactForm = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className={css.form}>
-      <label htmlFor="name-input">Name</label>
-      <input
-        type="text"
-        name="name"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        id="name-input"
-        required
-      />
-      <label htmlFor="number-input">Number</label>
-      <input
-        type="tel"
-        name="number"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        id="number-input"
-        required
-      />
-      <button type="submit">Add contact</button>
+      <div className={css['input-wrap']}>
+        <TextField
+          type="text"
+          id="name-input"
+          name="name"
+          label="Name"
+          variant="filled"
+          required
+        />
+        <TextField
+          type="tel"
+          name="number"
+          label="Number"
+          variant="filled"
+          pattern="[A-Za-z]+"
+          title="Three letter country code"
+          required
+        />
+      </div>
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{
+          background: 'var(--accent-pink)',
+          '&:hover': {
+            background: 'var(--accent-orange)',
+          },
+        }}
+      >
+        Add contact
+      </Button>
     </form>
   );
 };
