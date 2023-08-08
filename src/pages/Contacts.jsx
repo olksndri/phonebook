@@ -11,6 +11,8 @@ import {
 import { fetchContacts, addContact } from '../redux/contacts/operations';
 import Container from '@mui/material/Container';
 import { styled } from 'styled-components';
+import { validateNumber } from 'validation/validateNumber';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 const Title = styled.h1`
   text-align: center;
@@ -31,11 +33,18 @@ export const Contacts = () => {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
 
-    if (contacts.filter(el => el.name === name).length > 0) {
-      window.alert(`${name} is already in contacts`);
+    if (contacts.filter(el => el.name.trim() === name.trim()).length > 0) {
+      Report.warning(`${name}`, 'Is already in contacts.');
     } else {
-      dispatch(addContact({ name, number }));
-      form.reset();
+      if (validateNumber(number)) {
+        dispatch(addContact({ name, number }));
+        form.reset();
+      } else {
+        Report.warning(
+          "Number can't have letters",
+          'Remove letters from the number to continue.'
+        );
+      }
     }
   };
 

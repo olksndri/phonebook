@@ -20,8 +20,6 @@ export const ContactForm = ({ onSubmit }) => {
           name="number"
           label="Number"
           variant="filled"
-          pattern="[A-Za-z]+"
-          title="Three letter country code"
           required
         />
       </div>
