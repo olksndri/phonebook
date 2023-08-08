@@ -22,7 +22,7 @@ export const App = () => {
     if (isLoggedIn) {
       navigate('/');
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, dispatch, navigate]);
 
   return (
     <>

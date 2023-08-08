@@ -2,7 +2,6 @@ import css from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectSearchFilter } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
-import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 
