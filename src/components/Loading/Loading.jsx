@@ -1,6 +1,5 @@
 import AtomicSpinner from 'atomic-spinner';
 import css from './Loading.module.css';
-import PropTypes from 'prop-types';
 
 export const Loading = () => {
   return (
@@ -12,8 +11,4 @@ export const Loading = () => {
       />
     </div>
   );
-};
-
-Loading.propTypes = {
-  text: PropTypes.string,
 };

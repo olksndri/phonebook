@@ -20,7 +20,7 @@ export const Register = () => {
   return (
     <Box
       sx={{
-        ['max-width']: 300,
+        width: 300,
         paddingLeft: '40px',
         paddingTop: '40px',
       }}
