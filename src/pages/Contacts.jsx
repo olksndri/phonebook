@@ -41,8 +41,8 @@ export const Contacts = () => {
         form.reset();
       } else {
         Report.warning(
-          "Number can't have letters",
-          'Remove letters from the number to continue.'
+          'Number must have next structure:',
+          `Number must include at least 5 symbols. Number can't have letters.`
         );
       }
     }
