@@ -1,5 +1,5 @@
 export const validatePassword = paswword => {
-  const testPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+  const testPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$/g;
   return testPassword.test(paswword);
 };
 

@@ -26,11 +26,11 @@ export const Header = () => {
               <UserMenu />
             ) : (
               <>
-                <StyledNavLink to="/register" className={css['nav-link']}>
-                  Register
+                <StyledNavLink to="/signup" className={css['nav-link']}>
+                  Sign up
                 </StyledNavLink>
-                <StyledNavLink to="/login" className={css['nav-link']}>
-                  Login
+                <StyledNavLink to="/signin" className={css['nav-link']}>
+                  Sign in
                 </StyledNavLink>
               </>
             )}

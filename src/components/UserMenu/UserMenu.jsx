@@ -14,10 +14,14 @@ export const UserMenu = () => {
 
   return (
     <>
-      <p>{user.name}</p>
-      <p>{user.email}</p>
+      <div className={css['user-info-wrap']}>
+        {' '}
+        <p className={css.name}>{user.name}</p>
+        <p className={css.email}>{user.email}</p>
+      </div>
+
       <NavLink to="/" onClick={onLogout} className={css['nav-link']}>
-        Logout
+        Sign out
       </NavLink>
     </>
   );

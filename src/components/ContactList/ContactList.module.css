@@ -14,7 +14,24 @@
   background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
   -webkit-box-shadow: var(--accent-shadow-dark);
   -moz-box-shadow: var(--accent-shadow-dark);
+  box-shadow: var(--accent-shadow-dark);
   border: 1px solid gray;
   padding: 10px;
+  border-radius: 5px;
 }
 
+.oops {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
+  -webkit-box-shadow: var(--accent-shadow-dark);
+  -moz-box-shadow: var(--accent-shadow-dark);
+  box-shadow: var(--accent-shadow-dark);
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 5px;
+  color: aliceblue;
+  max-width: 800px;
+  margin: 0 auto;
+}

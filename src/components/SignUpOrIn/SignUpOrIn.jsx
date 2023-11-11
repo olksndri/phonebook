@@ -1,18 +1,38 @@
 import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/operations';
+import { register, logIn } from 'redux/auth/operations';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { validatePassword } from 'validation/validatePassword';
 import { passwordVisibility } from 'validation/validatePassword';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 import { IconButton } from '@mui/material';
 import { InputAdornment } from '@mui/material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-export const Login = () => {
+export const SignUpOrIn = ({ isSignUp }) => {
   const dispatch = useDispatch();
 
-  const onSubmit = evt => {
+  const onSubmitRegister = evt => {
+    evt.preventDefault();
+    const form = evt.target;
+    const name = form.elements.fullname.value;
+    const email = form.elements.email.value;
+    const password = form.elements.password.value;
+
+    if (validatePassword(password)) {
+      dispatch(register({ name, email, password }));
+      form.reset();
+    } else {
+      Report.warning(
+        'The password must contain:',
+        `At least 10 characters, at least one letter in lower case, at least one letter in upper case, at least one number or special character`
+      );
+    }
+  };
+
+  const onSubmitLogin = evt => {
     evt.preventDefault();
     const form = evt.target;
     const email = form.elements.email.value;
@@ -23,18 +43,24 @@ export const Login = () => {
   };
 
   const onClickPasswordVisibility = evt => {
-    passwordVisibility(evt, 'logPasswordInput');
+    passwordVisibility(evt, 'regPasswordInput');
   };
 
   return (
     <Box
       sx={{
         width: 300,
-        paddingLeft: '40px',
-        paddingTop: '40px',
+        position: 'absolute',
+        top: '150%',
+        right: '50%',
+        transform: 'translate(50%, 0)',
+        padding: '16px 32px',
+        background:
+          'linear-gradient(90deg, var(--accent-pink), var(--accent-orange))',
+        borderRadius: '5px',
       }}
     >
-      <form onSubmit={onSubmit}>
+      <form onSubmit={isSignUp ? onSubmitRegister : onSubmitLogin}>
         <Box
           sx={{
             display: 'flex',
@@ -43,19 +69,40 @@ export const Login = () => {
             marginBottom: '20px',
           }}
         >
+          {isSignUp ? (
+            <TextField
+              type="text"
+              name="fullname"
+              label="Your username:"
+              variant="filled"
+              sx={{
+                background: 'aliceblue',
+              }}
+              required
+            />
+          ) : (
+            ''
+          )}
+
           <TextField
             type="email"
             name="email"
             label="Your email:"
             variant="filled"
+            sx={{
+              background: 'aliceblue',
+            }}
             required
           />
           <TextField
+            id="regPasswordInput"
             type="password"
-            id="logPasswordInput"
             name="password"
             label="Your password:"
             variant="filled"
+            sx={{
+              background: 'aliceblue',
+            }}
             required
             InputProps={{
               endAdornment: (
@@ -81,13 +128,14 @@ export const Login = () => {
             variant="contained"
             sx={{
               width: '150px',
-              background: 'var(--accent-pink)',
+              background: 'aliceblue',
+              color: 'black',
               '&:hover': {
-                background: 'var(--accent-orange)',
+                background: 'var(--accent-grey)',
               },
             }}
           >
-            Login
+            {isSignUp ? 'Sign up' : 'Sign in'}
           </Button>
         </Box>
       </form>

@@ -45,18 +45,26 @@ export const ContactList = () => {
 
   return (
     <>
-      <ul className={css['contacts-list']}>
-        {filter === ''
-          ? contacts.map(el => {
-              return listItem(el);
-            })
-          : contacts.map(el => {
-              if (el.name.toLowerCase().includes(filter.toLowerCase().trim())) {
+      {contacts.length !== 0 ? (
+        <ul className={css['contacts-list']}>
+          {filter === ''
+            ? contacts.map(el => {
                 return listItem(el);
-              }
-              return <></>;
-            })}
-      </ul>
+              })
+            : contacts.map(el => {
+                if (
+                  el.name.toLowerCase().includes(filter.toLowerCase().trim())
+                ) {
+                  return listItem(el);
+                }
+                return <></>;
+              })}
+        </ul>
+      ) : (
+        <div className={css.oops}>
+          Oooops! it looks like you don't have any contacts in your phonebook...
+        </div>
+      )}
     </>
   );
 };

@@ -26,10 +26,17 @@
   text-decoration: none;
   font-weight: bold;
   transition: color 250ms linear;
+  font-size: 16px;
 }
 
 .nav-link:hover,
 .nav-link:focus {
   color: var(--accent-grey);
   outline: none;
+}
+
+@media (min-width: 768px) {
+  .nav-link {
+    font-size: 20px;
+  }
 }

@@ -1,12 +1,14 @@
 import css from './Filter.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSearchFilter } from '../../redux/contacts/filterSlice';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { selectContacts } from 'redux/contacts/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const onInput = evt => {
     const value = evt.target.value;
@@ -22,6 +24,7 @@ export const Filter = () => {
         type="text"
         id="filter-input"
         onInput={onInput}
+        disabled={contacts.length === 0}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

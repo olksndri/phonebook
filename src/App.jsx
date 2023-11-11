@@ -1,9 +1,9 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { Contacts } from '../../pages/Contacts';
+import { Contacts } from './pages/Contacts';
 import { Home } from 'pages/Home';
 import { Header } from 'components/Header/Header';
-import { Register } from 'pages/Register';
-import { Login } from 'pages/Login';
+import { SignUp } from 'pages/SignUp';
+import { SignIn } from 'pages/SignIn';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useEffect } from 'react';
@@ -33,8 +33,8 @@ export const App = () => {
           ) : (
             <>
               <Route index element={!isLoggedIn ? <Home /> : <Contacts />} />
-              <Route path="register" element={<Register />} />
-              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="signin" element={<SignIn />} />
             </>
           )}
         </Route>
